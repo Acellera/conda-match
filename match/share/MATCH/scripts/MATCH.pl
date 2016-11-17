@@ -143,7 +143,7 @@ foreach my $i (0 .. @ARGV-1) {
 		
 	}
 	
-	elsif($ARGV[$i] =~ /^-/) {
+	elsif($ARGV[$i] =~ /^-[^0-9]+/) {
 		
 		croak "Invoked " . $ARGV[$i] . " but did not specify its value!" if($i+1 == @ARGV); 
 		
