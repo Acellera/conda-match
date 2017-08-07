@@ -4,7 +4,7 @@
 ulimit -v 1048576 # Set maximum virtual memory to 1048576 kB = 1 GB
 ulimit -Hv > /dev/null # Set the hard limit and silence stdout
 
-F=$(dirname $(readlink -f $0))
-export MATCH="$F/../share/MATCH/"
-export PerlChemistry="$F/../share/MATCH/PerlChemistry/"
+DIR=$(dirname "$(which python)")
+export MATCH="$DIR/../share/MATCH/"
+export PerlChemistry="$DIR/../share/MATCH/PerlChemistry/"
 $MATCH/scripts/MATCH.pl $@ 
