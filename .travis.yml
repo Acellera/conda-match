@@ -3,15 +3,9 @@ matrix:
    - os: linux
      language: generic
      env: TRAVIS_PYTHON_VERSION=3.6
-   - os: linux
-     language: generic
-     env: TRAVIS_PYTHON_VERSION=3.5
    - os: osx
      language: generic
      env: TRAVIS_PYTHON_VERSION=3.6
-   - os: osx
-     language: generic
-     env: TRAVIS_PYTHON_VERSION=3.5
 
 
 install:
@@ -44,9 +38,9 @@ script:
 after_success:
  - export PATH="$HOME/miniconda/bin:$PATH"
  - echo $PATH
- - anaconda -t $ANACONDA_TOKEN upload  $HOME/miniconda/conda-bld/*-64/match-[0-9]*.tar.bz2 -u acellera 
+ - anaconda -t $ANACONDA_TOKEN upload $HOME/miniconda/conda-bld/*-64/match-[0-9]*.tar.bz2 -u acellera 
 # Convert the package from  linux-64 to win-64, as it's source-only
- - conda convert -p win-64  $HOME/miniconda/conda-bld/*-64/match-[0-9]*.tar.bz2
+ - conda convert -p win-64 $HOME/miniconda/conda-bld/linux-64/match-[0-9]*.tar.bz2
  - anaconda -t $ANACONDA_TOKEN upload win-64/*bz2 -u acellera 
 
 
